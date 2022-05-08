@@ -4,7 +4,7 @@ for (var i = 0; i < drumButtons.length; i++) {
     drumButtons[i].addEventListener("click", function (){
         var buttonInnerHTML = this.innerHTML;
         makeSounds(buttonInnerHTML);
-        
+        buttonAnimation(buttonInnerHTML);
     });
 }
 
@@ -15,29 +15,37 @@ document.addEventListener("keydown", function(event){
 function makeSounds(key){
     switch (key) {
         case "w":     
-            var audioButton = document.querySelector("audio#tom-1").play();
+            document.querySelector("audio#tom-1").play();
             break;
         case "a":
-            var audioButton = document.querySelector("audio#tom-2").play();
+            document.querySelector("audio#tom-2").play();
             break;
         case "s":
-            var audioButton = document.querySelector("audio#tom-3").play();
+            document.querySelector("audio#tom-3").play();
             break;
         case "d":
-            var audioButton = document.querySelector("audio#tom-4").play();
+            document.querySelector("audio#tom-4").play();
             break;
         case "j":
-            var audioButton = document.querySelector("audio#snare").play();
+            document.querySelector("audio#snare").play();
             break;
         case "k":
-            var audioButton = document.querySelector("audio#crash").play();
+            document.querySelector("audio#crash").play();
             break;
         case "l": 
-            var audioButton = document.querySelector("audio#kick-bass").play();
+            document.querySelector("audio#kick-bass").play();
             break;
         default:
             console.log(buttonInnerHTML);
             break;
     }
+}
+
+function buttonAnimation(currentKey){
+    var activeButton = document.querySelector("."+ currentKey);
+    activeButton.classList.add("pressed");
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    }, 10);
 }
 
